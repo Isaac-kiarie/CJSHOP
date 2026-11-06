@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Contact us | {{ site_name }}{% endblock %}
+{% block content %}
+  <div class="row justify-content-center"><div class="col-lg-8">
+    <h1 class="h3 mb-3">Contact us</h1>
+    {% if contact_phone or contact_email or contact_address %}
+      <ul class="list-unstyled">
+        {% if contact_phone %}<li>Phone: <a href="tel:{{ contact_phone }}">{{ contact_phone }}</a></li>{% endif %}
+        {% if contact_email %}<li>Email: <a href="mailto:{{ contact_email }}">{{ contact_email }}</a></li>{% endif %}
+        {% if contact_address %}<li>Address: {{ contact_address }}</li>{% endif %}
+      </ul>
+    {% else %}
+      <p>[[CONFIRM: contact details. Set CONTACT_PHONE, CONTACT_EMAIL and CONTACT_ADDRESS in .env]]</p>
+    {% endif %}
+    <p>Please quote your order number when you contact us about an order.</p>
+  </div></div>
+{% endblock %}

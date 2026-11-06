@@ -1,0 +1,11 @@
+bind = "unix:/run/cjshop/gunicorn.sock"   # a private socket: nobody can reach Gunicorn except through Nginx
+workers = 3
+worker_class = "sync"
+timeout = 60            # must exceed the worst case: a token request (15 s) plus an STK push (15 s)
+graceful_timeout = 30
+max_requests = 1000     # recycle workers now and then to contain slow memory leaks
+max_requests_jitter = 100
+umask = 0o007           # socket becomes group-readable for Nginx only
+accesslog = "-"
+errorlog = "-"
+loglevel = "info"

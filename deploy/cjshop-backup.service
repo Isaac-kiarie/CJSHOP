@@ -1,0 +1,7 @@
+[Unit]
+Description=Back up the CJ SHOP database and media
+
+[Service]
+Type=oneshot
+User=deploy
+ExecStart=/srv/cjshop/app/deploy/backup.sh

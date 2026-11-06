@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Delivery &amp; payments | {{ site_name }}{% endblock %}
+{% block content %}
+  <div class="row justify-content-center"><div class="col-lg-8">
+    <h1 class="h3 mb-3">Delivery &amp; payments</h1>
+    <h2 class="h5">How to pay</h2>
+    <p>We accept <strong>M-Pesa</strong>. After you place your order, enter your Safaricom number and
+    approve the prompt on your phone. Your order is confirmed as soon as M-Pesa confirms the payment to us.
+    You are never charged until you enter your M-Pesa PIN.</p>
+    <h2 class="h5">Delivery</h2>
+    <p>Delivery costs a flat <strong>KES {{ delivery_fee|floatformat:0 }}</strong> per order.</p>
+    <p>[[CONFIRM: delivery areas, delivery times and who delivers]]</p>
+    <h2 class="h5">Cancellations and refunds</h2>
+    <p>You can cancel an unpaid order from <em>My orders</em> at any time. If you have already paid and need to
+    cancel, please contact us, and we will refund you through M-Pesa.</p>
+    <p>[[CONFIRM: returns and exchanges policy]]</p>
+  </div></div>
+{% endblock %}

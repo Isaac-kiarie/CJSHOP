@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load catalogue %}
+
+{% block content %}
+  <section class="hero text-white rounded-3 p-4 p-md-5 mb-4 text-center">
+    <h1 class="display-6 fw-bold">{{ site_name }}</h1>
+    <p class="lead mb-4">{{ site_tagline }}</p>
+    <a class="btn btn-warning btn-lg" href="{% url 'products:product_list' %}">Shop now</a>
+  </section>
+
+  {% if nav_categories %}
+    <section class="mb-5" aria-labelledby="categories-heading">
+      <h2 class="h5 mb-3" id="categories-heading">Shop by category</h2>
+      <div class="row row-cols-2 row-cols-md-4 g-3">
+        {% for cat in nav_categories %}
+          <div class="col">
+            <a class="btn btn-outline-dark w-100 category-tile d-flex align-items-center justify-content-center"
+               href="{{ cat.get_absolute_url }}">{{ cat.name }}</a>
+          </div>
+        {% endfor %}
+      </div>
+    </section>
+  {% endif %}
+
+  <section class="mb-5" aria-labelledby="featured-heading">
+    <div class="d-flex justify-content-between align-items-baseline mb-3">
+      <h2 class="h5 mb-0" id="featured-heading">Featured products</h2>
+      <a href="{% url 'products:product_list' %}" class="small">See all</a>
+    </div>
+    {% featured_products 8 as featured %}
+    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-3">
+      {% for product in featured %}
+        {% include "products/_product_card.html" %}
+      {% empty %}
+        <div class="col-12"><p class="text-muted">Our products are coming soon. Please check back shortly.</p></div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="row text-center g-3 mb-2" aria-label="How it works">
+    <div class="col-md-4"><p class="fw-semibold mb-1">1. Choose</p><p class="small text-muted mb-0">Pick your favourites and add them to your cart.</p></div>
+    <div class="col-md-4"><p class="fw-semibold mb-1">2. Pay with M-Pesa</p><p class="small text-muted mb-0">Approve the payment on your phone. No card needed.</p></div>
+    <div class="col-md-4"><p class="fw-semibold mb-1">3. Delivered</p><p class="small text-muted mb-0">Flat delivery fee of KES {{ delivery_fee|floatformat:0 }} per order.</p></div>
+  </section>
+{% endblock %}

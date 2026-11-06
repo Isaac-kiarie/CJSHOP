@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Privacy | {{ site_name }}{% endblock %}
+{% block content %}
+  <div class="row justify-content-center"><div class="col-lg-8">
+    <h1 class="h3 mb-3">Privacy</h1>
+    <h2 class="h5">What we collect</h2>
+    <p>Your name, email address and phone number, the delivery addresses you save, your orders, and the
+    M-Pesa number and receipt for each payment. We do not see or store your M-Pesa PIN.</p>
+    <h2 class="h5">Why we collect it</h2>
+    <p>To process and deliver your orders, take payment, and contact you about them.</p>
+    <h2 class="h5">Who can see it</h2>
+    <p>Only authorised staff of {{ site_name }}, and Safaricom for the payment itself.</p>
+    <h2 class="h5">Your choices</h2>
+    <p>You can update your details from <em>My profile</em>. To ask us to correct or delete your data,
+    {% if contact_email %}write to <a href="mailto:{{ contact_email }}">{{ contact_email }}</a>.{% else %}contact us.{% endif %}</p>
+    <p>[[CONFIRM: how long order records are kept, and the business's registration details]]</p>
+  </div></div>
+{% endblock %}

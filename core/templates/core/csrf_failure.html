@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Security Check Failed | {{ block.super }}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-7">
+      <div class="card border-danger shadow-sm">
+        <div class="card-body text-center p-5">
+          <h1 class="h3 text-danger">Security check failed</h1>
+          <p class="mt-3">Your form could not be submitted because its security token was invalid or expired.</p>
+          <p class="text-muted">Please refresh the page and try again.</p>
+          <a href="{% url 'core:home' %}" class="btn btn-primary mt-2">Return home</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

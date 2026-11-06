@@ -1,0 +1,22 @@
+[Unit]
+Description=CJ SHOP (Gunicorn)
+After=network.target mysql.service
+Wants=mysql.service
+
+[Service]
+User=deploy
+Group=www-data
+WorkingDirectory=/srv/cjshop/app
+RuntimeDirectory=cjshop
+RuntimeDirectoryMode=0750
+ExecStart=/srv/cjshop/venv/bin/gunicorn config.wsgi:application -c /srv/cjshop/app/deploy/gunicorn.conf.py
+ExecReload=/bin/kill -s HUP $MAINPID
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ProtectHome=true
+
+[Install]
+WantedBy=multi-user.target
